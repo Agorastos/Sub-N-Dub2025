@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output, QueryList, ViewChild, ViewChildren} from '@angular/core';
+import {Component, EventEmitter, ElementRef, Input, HostListener, OnInit, Output, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
 import {BehaviorSubject, Observable, skip, take, tap} from 'rxjs';
 import {DialogBox} from 'src/app/models/general/dialog-box.model';
@@ -51,6 +51,7 @@ export class DialogComponentComponent implements OnInit {
   public focusedDialogBox: number;
   public loading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(null);
   protected isDirty: boolean = false;
+  public activeIndex: number | null = null;
   @Input() canOnlyView: boolean;
   @Input() canComment: boolean;
   @Input() initSubtitles: boolean = true;
@@ -659,6 +660,18 @@ export class DialogComponentComponent implements OnInit {
     });
     this.ttsService.set_initContentSSML(contentToSpeech);
     this.navigateTTS.emit();
+  }
+
+  setActiveIndex(i: any, event: Event) {
+    event.stopPropagation();
+    this.activeIndex = i;
+  }
+
+  @HostListener('document:click', ['$event'])
+  clearActiveIndex(event: Event) {
+    if (!(event.target as HTMLElement).closest('dialog-content')) {
+      this.activeIndex = null;
+    }
   }
 }
 

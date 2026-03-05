@@ -26,6 +26,7 @@ export class DialogContentComponent implements OnChanges {
   @Input() canOnlyView: boolean;
   @Input() canComment: boolean;
   @Input() currentLanguage$: Observable<Language>
+  @Input() activeBox: boolean;
   @Output() loading$: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() deleteDialogBoxEvent: EventEmitter<number> = new EventEmitter();
   @Output() dialogEmitter: EventEmitter<TimeEmitterObject> = new EventEmitter();
@@ -37,6 +38,7 @@ export class DialogContentComponent implements OnChanges {
   @ViewChild('assingPersonMenu') assignPersonMenu;
   @ViewChild('openAIMenu') openAIMenu;
   @ViewChild('textarea') textarea: ElementRef;
+  @ViewChild('boxDialog') boxDialog: ElementRef;
 
   assignedPerson: CharacterAssign;
   wordCount: number = 0;
@@ -44,6 +46,7 @@ export class DialogContentComponent implements OnChanges {
   timingEstimation: number = 0;
   estimationTooltip: string;
   estimationIcon: string;
+  focusedBox: number | null = null;
 
 
   readonly openAIMenuMap = new Map([

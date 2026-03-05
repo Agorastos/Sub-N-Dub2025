@@ -47,6 +47,8 @@ export class DashboardComponent implements OnInit {
   sortByDate: boolean = false;
   sortOrder: 'asc' | 'desc' = 'asc';
   supportedLanguages$: BehaviorSubject<SupportedLanguages> = new BehaviorSubject<SupportedLanguages>(null);
+  isExpanded = true;
+  isSharedExpanded = true;
   @ViewChild('userVideosContainer') userVideosContainer: ElementRef
   
 
@@ -249,5 +251,13 @@ export class DashboardComponent implements OnInit {
     this.videoSelectedId = null;
     this.renderer.removeClass(this.userVideosContainer.nativeElement,'list-view');
     this.renderer.addClass(this.userVideosContainer.nativeElement,'grid-view');
+  }
+
+  toggleExpand() {
+  this.isExpanded = !this.isExpanded; 
+  }
+
+  toggleSharedExpand() {
+    this.isSharedExpanded = !this.isSharedExpanded; 
   }
 }

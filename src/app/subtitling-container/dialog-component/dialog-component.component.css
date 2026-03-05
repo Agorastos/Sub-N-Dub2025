@@ -4,8 +4,9 @@
 }
 
 .main-content_wrapper {
+    margin-top: 40px;
     overflow-y: auto;
-    height: 65vh;
+    height: 70vh;
     overflow-x: visible;
 }
 
@@ -26,5 +27,5 @@
 }
 
 .button-wrapper button:hover{
-  scale: 118%;
+  scale: 128%;
 }
