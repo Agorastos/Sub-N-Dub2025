@@ -119,6 +119,14 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+  toggleExpand() {
+    this.isExpanded = !this.isExpanded; 
+  }
+
+  toggleSharedExpand() {
+    this.isSharedExpanded = !this.isSharedExpanded; 
+  }
+
   onFilterChange() {
     this.filterValue = '';
   }
@@ -253,11 +261,5 @@ export class DashboardComponent implements OnInit {
     this.renderer.addClass(this.userVideosContainer.nativeElement,'grid-view');
   }
 
-  toggleExpand() {
-  this.isExpanded = !this.isExpanded; 
-  }
 
-  toggleSharedExpand() {
-    this.isSharedExpanded = !this.isSharedExpanded; 
-  }
 }

@@ -1,14 +1,16 @@
 <div *ngIf="(user$ | async)" class="dashboard-wrapper">
     <div class="dashboard-header">
+        <span class="my-videos flex items-center space-x-2">
         <span class="my-videos">My Videos ({{(userVideos$ | async)?.length}})</span>
-        <button
-            mat-icon-button
-            (click)="toggleExpand()"
-            class="transition-transform transform"
-            matTooltip="{{isExpanded ? 'Collapse' : 'Expand'}}"
-            >
-            <mat-icon [class.rotate-180]="isExpanded">expand_more</mat-icon>
-        </button>
+            <button
+                mat-icon-button
+                (click)="toggleExpand()"
+                class="transition-transform transform"
+                matTooltip="{{isExpanded ? 'Collapse' : 'Expand'}}"
+                >
+                <mat-icon [class.rotate-180]="isExpanded">expand_more</mat-icon>
+            </button>
+        </span>
         <button mat-fab class="add-video-btn" color="primary" matTooltip="Add New video" (click)="openDialog()">
           <mat-icon>add</mat-icon>
         </button>
@@ -56,6 +58,15 @@
     <mat-divider></mat-divider>
     <div class="myshared-videos-header">
         <h1>My Shared Videos ({{(userSharedVideos$ | async)?.length}})</h1>
+        <button
+            id="sharedExpandBtn"
+            mat-icon-button
+            (click)="toggleSharedExpand()"
+            class="transition-transform transform"
+            matTooltip="{{isSharedExpanded ? 'Collapse' : 'Expand'}}"
+            >
+            <mat-icon [class.rotate-180]="isSharedExpanded">expand_more</mat-icon>
+        </button>
         <mat-form-field class="search-field">
             <mat-label>Search By Title</mat-label>
             <input matInput [(ngModel)]="searchSharedTerm">

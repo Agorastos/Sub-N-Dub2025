@@ -23,9 +23,10 @@
 }
 
 .button-wrapper button{
-  transition: scale 0.14s ease
+    scale: 118%;
+    transition: scale 0.14s ease
 }
 
 .button-wrapper button:hover{
-  scale: 128%;
+    scale: 128%;
 }
